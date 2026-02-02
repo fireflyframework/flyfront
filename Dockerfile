@@ -35,7 +35,7 @@ COPY docker/default.conf.template /etc/nginx/templates/default.conf.template
 
 # Copy built application
 ARG APP_NAME=demo-app
-COPY --from=builder /app/dist/${APP_NAME}/browser /usr/share/nginx/html
+COPY --from=builder /app/dist/apps/${APP_NAME}/browser /usr/share/nginx/html
 
 # Copy environment configuration script
 COPY docker/env.sh /docker-entrypoint.d/40-env.sh

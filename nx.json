@@ -67,7 +67,7 @@
       "style": "scss"
     }
   },
-  "defaultProject": "flyfront",
+  "defaultProject": "demo-app",
   "release": {
     "version": {
       "preVersionCommand": "npx nx run-many -t build"
