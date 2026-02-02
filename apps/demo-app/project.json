@@ -85,10 +85,8 @@
       }
     },
     "test": {
-      "executor": "@nx/vite:test",
-      "options": {
-        "configFile": "apps/demo-app/vite.config.ts"
-      }
+      "executor": "@nx/angular:unit-test",
+      "options": {}
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
