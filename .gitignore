@@ -279,3 +279,4 @@ connect.lock
 # *.avi
 # *.psd
 # *.ai
+.verdaccio/
