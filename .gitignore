@@ -1,46 +1,281 @@
-# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# ============================================================================
+# Flyfront .gitignore
+# Comprehensive ignore patterns for Angular/Nx monorepo development
+# ============================================================================
 
-# compiled output
-dist
-tmp
-out-tsc
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-# dependencies
-node_modules
+# ============================================================================
+# BUILD OUTPUTS
+# ============================================================================
 
-# IDEs and editors
-/.idea
+# Compiled output directories
+dist/
+tmp/
+out-tsc/
+build/
+.output/
+
+# Angular build artifacts
+.angular/
+
+# Nx build and cache artifacts
+.nx/
+.nx/cache/
+.nx/workspace-data/
+
+# ============================================================================
+# DEPENDENCIES
+# ============================================================================
+
+# Node.js dependencies (never commit these)
+node_modules/
+
+# Package manager lock files (keep ONE - we use npm)
+# Uncomment if you want to ignore yarn/pnpm lock files
+# yarn.lock
+# pnpm-lock.yaml
+
+# ============================================================================
+# ENVIRONMENT & SECRETS
+# ============================================================================
+
+# Environment files with secrets (NEVER commit these)
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.staging.local
+
+# Keep environment templates (these ARE committed)
+!.env.example
+!.env.template
+
+# Secret files
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets/
+.secrets/
+
+# ============================================================================
+# IDE & EDITOR FILES
+# ============================================================================
+
+# JetBrains IDEs (IntelliJ, WebStorm, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/*
+# Allow shared VS Code settings
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Eclipse
 .project
 .classpath
 .c9/
 *.launch
 .settings/
+
+# Sublime Text
 *.sublime-workspace
+*.sublime-project
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# Vim/Neovim
+*.swp
+*.swo
+*.swn
+*~
+.vim/
+.nvim/
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+# Emacs
+*#
+.#*
+*.elc
+auto-save-list/
 
-# System Files
+# Atom
+.atom/
+
+# TextMate
+*.tmproj
+*.tmproject
+tmtags
+
+# ============================================================================
+# OPERATING SYSTEM FILES
+# ============================================================================
+
+# macOS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+
+# Windows
 Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
 
-.nx/cache
-.nx/workspace-data
+# Linux
+.directory
+.Trash-*
 
-.angular
+# ============================================================================
+# TESTING & COVERAGE
+# ============================================================================
 
+# Test coverage reports
+coverage/
+*.lcov
+.nyc_output/
+lib-cov/
+
+# Test artifacts
+testem.log
+libpeerconnection.log
 __screenshots__/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Cypress (if used)
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# ============================================================================
+# LOGS & DEBUG
+# ============================================================================
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================================================
+# PACKAGE MANAGER CACHES
+# ============================================================================
+
+# npm
+.npm/
+.npmrc.local
+
+# Yarn
+.yarn-integrity
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# pnpm
+.pnpm-store/
+
+# ============================================================================
+# SASS & CSS PREPROCESSING
+# ============================================================================
+
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# ============================================================================
+# TYPESCRIPT
+# ============================================================================
+
+# TypeScript declaration files (generated)
+*.tsbuildinfo
+
+# Typings
+typings/
+
+# ============================================================================
+# MISCELLANEOUS
+# ============================================================================
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Local configuration overrides
+*.local.json
+*.local.ts
+*.local.js
+local.config.*
+
+# Documentation build output
+docs/_build/
+docs/.vitepress/dist/
+docs/.docusaurus/
+site/
+
+# Storybook build
+storybook-static/
+
+# Verdaccio (local npm registry)
+.verdaccio/storage/
+
+# Docker volumes (local only)
+.docker-data/
+
+# Lock files from connect module
+connect.lock
+
+# ============================================================================
+# OPTIONAL: UNCOMMIT AS NEEDED
+# ============================================================================
+
+# Uncomment to ignore generated API documentation
+# docs/api/generated/
+
+# Uncomment to ignore large binary assets
+# *.mp4
+# *.mov
+# *.avi
+# *.psd
+# *.ai
