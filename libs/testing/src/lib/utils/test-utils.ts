@@ -1,6 +1,7 @@
 /**
  * @flyfront/testing - Test Utilities
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 import { Type, DebugElement, signal, Signal } from '@angular/core';

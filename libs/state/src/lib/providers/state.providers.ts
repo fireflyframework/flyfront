@@ -1,6 +1,7 @@
 /**
  * @flyfront/state - State Providers
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 import { EnvironmentProviders, makeEnvironmentProviders, Type } from '@angular/core';

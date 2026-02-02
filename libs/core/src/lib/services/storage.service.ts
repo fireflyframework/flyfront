@@ -1,6 +1,7 @@
 /**
  * @flyfront/core - Storage Service
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 import { Injectable } from '@angular/core';

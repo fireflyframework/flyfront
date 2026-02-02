@@ -1,6 +1,7 @@
 /**
  * @flyfront/testing - Testing Utilities Library
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 // Mock Services

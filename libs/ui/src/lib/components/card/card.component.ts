@@ -1,6 +1,7 @@
 /**
  * @flyfront/ui - Card Component
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 import { Component, Input, ChangeDetectionStrategy, booleanAttribute } from '@angular/core';

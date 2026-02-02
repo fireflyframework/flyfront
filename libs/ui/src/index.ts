@@ -1,6 +1,7 @@
 /**
  * @flyfront/ui - UI Component Library
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 // Design Tokens
@@ -38,3 +39,4 @@ export * from './lib/components/menu/menu.component';
 // Layout Components
 export * from './lib/components/loading/loading.component';
 export * from './lib/components/app-shell/app-shell.component';
+export * from './lib/components/layouts/index';

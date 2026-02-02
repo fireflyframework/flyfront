@@ -1,6 +1,7 @@
 /**
  * @flyfront/core - Authentication Guard
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 import { inject } from '@angular/core';

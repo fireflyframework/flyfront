@@ -1,6 +1,7 @@
 /**
  * @flyfront/i18n - Transloco HTTP Loader
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 import { inject, Injectable } from '@angular/core';

@@ -19,7 +19,7 @@ _/ ____\  | ___.__._/ ____\______  ____   _____/  |_
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178c6.svg)](https://www.typescriptlang.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38bdf8.svg)](https://tailwindcss.com/)
 
-[Getting Started](#-getting-started) •
+[Getting Started](#getting-started) •
 [Documentation](docs/README.md) •
 [Architecture](docs/architecture/README.md) •
 [Contributing](CONTRIBUTING.md)
@@ -30,15 +30,15 @@ _/ ____\  | ___.__._/ ____\______  ____   _____/  |_
 
 ## Table of Contents
 
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [Architecture](#-architecture)
-- [Getting Started](#-getting-started)
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Quick Start](#quick-start)
-- [Project Structure](#-project-structure)
-- [Libraries](#-libraries)
+- [Project Structure](#project-structure)
+- [Libraries](#libraries)
   - [@flyfront/core](#flyfrontcore)
   - [@flyfront/ui](#flyfrontui)
   - [@flyfront/auth](#flyfrontauth)
@@ -46,18 +46,18 @@ _/ ____\  | ___.__._/ ____\______  ____   _____/  |_
   - [@flyfront/state](#flyfrontstate)
   - [@flyfront/i18n](#flyfronti18n)
   - [@flyfront/testing](#flyfronttesting)
-- [Design System](#-design-system)
-- [Usage Examples](#-usage-examples)
-- [Development](#-development)
-- [Testing](#-testing)
-- [Deployment](#-deployment)
-- [Documentation](#-documentation)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Design System](#design-system)
+- [Usage Examples](#usage-examples)
+- [Development](#development)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Documentation](#documentation-1)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-##  Overview
+## Overview
 
 **Flyfront** is the centralized Angular frontend architecture designed specifically for the Firefly ecosystem. It provides a comprehensive, battle-tested foundation for building enterprise-grade web applications with a focus on:
 
@@ -81,43 +81,43 @@ Flyfront provides all of this out of the box, letting you focus on building feat
 
 ---
 
-##  Key Features
+## Key Features
 
-###  Modern Architecture
+### Modern Architecture
 - **Angular 21** with standalone components, signals, and control flow
 - **Nx 22** monorepo for efficient builds, caching, and code sharing
 - **TypeScript 5.9** with strict mode for maximum type safety
 
-###  Design System
+### Design System
 - **TailwindCSS 4** for utility-first styling
 - **Design Tokens** for colors, typography, spacing, and more
 - **Accessible Components** following WCAG guidelines
 - **Dark Mode Support** built into the theming system
 
-###  Authentication & Security
+### Authentication & Security
 - **OIDC/OAuth2** integration (Keycloak, Auth0, Azure AD)
 - **JWT Token Management** with automatic refresh
 - **Role-Based Access Control (RBAC)** with guards and directives
 - **Permission-Based UI** rendering
 
-###  Data Management
+### Data Management
 - **Type-Safe HTTP Client** with interceptors
 - **Reactive State Management** with NgRx and Signals
 - **Caching Strategies** for optimal performance
 - **WebSocket Support** for real-time features
 
-###  Internationalization
+### Internationalization
 - **Multi-Language Support** with lazy-loaded translations
 - **Locale-Aware Formatting** for dates, numbers, and currencies
 - **RTL Support** for right-to-left languages
 
-###  Testing & Quality
+### Testing & Quality
 - **Unit Testing** with Vitest/Jest
 - **E2E Testing** with Playwright
 - **Component Testing** with Storybook
 - **Code Coverage** reporting
 
-###  DevOps Ready
+### DevOps Ready
 - **Docker** multi-stage builds
 - **GitHub Actions** CI/CD pipelines
 - **Environment Configuration** at runtime
@@ -125,7 +125,7 @@ Flyfront provides all of this out of the box, letting you focus on building feat
 
 ---
 
-##  Architecture
+## Architecture
 
 Flyfront follows a **layered monorepo architecture** that promotes code reuse while maintaining clear boundaries between different concerns:
 
@@ -166,7 +166,7 @@ Flyfront follows a **layered monorepo architecture** that promotes code reuse wh
 
 ---
 
-##  Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -235,7 +235,7 @@ npx nx build demo-app --configuration=production
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```
 flyfront/
@@ -293,7 +293,7 @@ flyfront/
 
 ---
 
-##  Libraries
+## Libraries
 
 ### @flyfront/core
 
@@ -404,7 +404,7 @@ import { MockAuthService, renderComponent } from '@flyfront/testing';
 
 ---
 
-##  Design System
+## Design System
 
 Flyfront includes a comprehensive design system built on design tokens:
 
@@ -442,7 +442,7 @@ Based on a **4px base unit**:
 
 ---
 
-##  Usage Examples
+## Usage Examples
 
 ### Basic Component Usage
 
@@ -646,7 +646,7 @@ export const routes: Routes = [
 
 ---
 
-##  Development
+## Development
 
 ### Common Commands
 
@@ -690,7 +690,7 @@ npx nx run-many -t typecheck
 
 ---
 
-##  Testing
+## Testing
 
 ### Unit Tests
 
@@ -720,7 +720,7 @@ npx nx e2e e2e --ui
 
 ---
 
-##  Deployment
+## Deployment
 
 ### Building for Production
 
@@ -759,7 +759,7 @@ docker run -p 80:80 \
 
 ---
 
-##  Documentation
+## Documentation
 
 Comprehensive documentation is available in the `/docs` directory:
 
@@ -774,7 +774,7 @@ Comprehensive documentation is available in the `/docs` directory:
 
 ---
 
-##  Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
@@ -802,7 +802,7 @@ We use [Conventional Commits](https://www.conventionalcommits.org/):
 
 ---
 
-##  License
+## License
 
 This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
 

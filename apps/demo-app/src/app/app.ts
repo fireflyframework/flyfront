@@ -1,3 +1,9 @@
+/**
+ * @flyfront/demo-app - app
+ * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
+ */
+
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxWelcome } from './nx-welcome';

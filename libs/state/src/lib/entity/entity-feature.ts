@@ -1,6 +1,7 @@
 /**
  * @flyfront/state - Entity Feature Factory
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 import { createFeature, createReducer, on, createAction, props } from '@ngrx/store';

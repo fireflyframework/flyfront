@@ -1,3 +1,9 @@
+/**
+ * @flyfront/demo-app - app.spec
+ * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
+ */
+
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { NxWelcome } from './nx-welcome';

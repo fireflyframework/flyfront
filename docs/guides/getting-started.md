@@ -1,13 +1,15 @@
 # Getting Started
 
-This guide will help you set up your development environment and get started with Flyfront.
+This guide will help you set up your development environment and get started with Flyfront. Whether you're joining an existing project or creating a new one from scratch, this guide covers everything you need.
 
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
-- [Installation](#installation)
+- [Option A: Clone Existing Flyfront Repository](#option-a-clone-existing-flyfront-repository)
+- [Option B: Create New Nx Workspace from Scratch](#option-b-create-new-nx-workspace-from-scratch)
 - [Project Overview](#project-overview)
 - [Running the Application](#running-the-application)
+- [Essential Nx Commands](#essential-nx-commands)
 - [Making Your First Change](#making-your-first-change)
 - [Understanding the Workflow](#understanding-the-workflow)
 - [Next Steps](#next-steps)
@@ -68,7 +70,9 @@ code --install-extension bradlc.vscode-tailwindcss
 
 ---
 
-## Installation
+## Option A: Clone Existing Flyfront Repository
+
+If you're joining a team that already uses Flyfront, follow these steps:
 
 ### 1. Clone the Repository
 
@@ -96,6 +100,208 @@ npx nx graph
 ```
 
 The `nx graph` command opens a browser window showing the dependency relationships between all projects.
+
+---
+
+## Option B: Create New Nx Workspace from Scratch
+
+If you're starting a brand new project and want to use the Flyfront architecture, follow these steps to create an Nx workspace from scratch.
+
+### Step 1: Create the Nx Workspace
+
+```bash
+# Create a new Nx workspace with Angular
+npx create-nx-workspace@latest my-flyfront-app \
+  --preset=angular-monorepo \
+  --appName=my-app \
+  --style=scss \
+  --routing=true \
+  --standaloneApi=true \
+  --e2eTestRunner=playwright \
+  --nxCloud=skip
+```
+
+**What each option means:**
+- `--preset=angular-monorepo`: Creates an Angular monorepo structure with libs/apps folders
+- `--appName=my-app`: Name of your first application
+- `--style=scss`: Uses SCSS for styling (required for Tailwind integration)
+- `--routing=true`: Includes Angular Router
+- `--standaloneApi=true`: Uses modern standalone components (no NgModules)
+- `--e2eTestRunner=playwright`: Uses Playwright for end-to-end testing
+- `--nxCloud=skip`: Skip Nx Cloud for now (you can enable later)
+
+### Step 2: Navigate to Your Workspace
+
+```bash
+cd my-flyfront-app
+```
+
+### Step 3: Install TailwindCSS
+
+```bash
+# Install Tailwind CSS and dependencies
+npm install -D tailwindcss postcss autoprefixer
+
+# Initialize Tailwind configuration
+npx tailwindcss init
+```
+
+### Step 4: Configure Tailwind
+
+Update `tailwind.config.js`:
+
+```javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./apps/**/*.{html,ts}",
+    "./libs/**/*.{html,ts}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+        },
+        // Add more custom colors as needed
+      },
+    },
+  },
+  plugins: [],
+};
+```
+
+Add Tailwind directives to your app's `styles.scss`:
+
+```scss
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Step 5: Create Shared Libraries
+
+Create the core library structure that mirrors Flyfront:
+
+```bash
+# Create core utilities library
+npx nx g @nx/angular:library core \
+  --directory=libs/core \
+  --buildable=true \
+  --publishable=true \
+  --importPath=@myapp/core \
+  --tags="type:core,scope:shared"
+
+# Create UI component library
+npx nx g @nx/angular:library ui \
+  --directory=libs/ui \
+  --buildable=true \
+  --publishable=true \
+  --importPath=@myapp/ui \
+  --tags="type:ui,scope:shared"
+
+# Create authentication library
+npx nx g @nx/angular:library auth \
+  --directory=libs/auth \
+  --buildable=true \
+  --publishable=true \
+  --importPath=@myapp/auth \
+  --tags="type:feature,scope:auth"
+
+# Create data access library
+npx nx g @nx/angular:library data-access \
+  --directory=libs/data-access \
+  --buildable=true \
+  --publishable=true \
+  --importPath=@myapp/data-access \
+  --tags="type:data-access,scope:shared"
+```
+
+### Step 6: Set Up Path Mappings
+
+Verify `tsconfig.base.json` has the path mappings:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@myapp/core": ["libs/core/src/index.ts"],
+      "@myapp/ui": ["libs/ui/src/index.ts"],
+      "@myapp/auth": ["libs/auth/src/index.ts"],
+      "@myapp/data-access": ["libs/data-access/src/index.ts"]
+    }
+  }
+}
+```
+
+### Step 7: Configure Dependency Rules
+
+Add dependency rules to `nx.json` to enforce architecture:
+
+```json
+{
+  "enforce-module-boundaries": [
+    {
+      "sourceTag": "type:app",
+      "onlyDependOnLibsWithTags": ["type:feature", "type:ui", "type:core", "type:data-access"]
+    },
+    {
+      "sourceTag": "type:feature",
+      "onlyDependOnLibsWithTags": ["type:ui", "type:core", "type:data-access"]
+    },
+    {
+      "sourceTag": "type:ui",
+      "onlyDependOnLibsWithTags": ["type:core"]
+    },
+    {
+      "sourceTag": "type:data-access",
+      "onlyDependOnLibsWithTags": ["type:core"]
+    },
+    {
+      "sourceTag": "type:core",
+      "onlyDependOnLibsWithTags": []
+    }
+  ]
+}
+```
+
+### Step 8: Verify Your Setup
+
+```bash
+# Start the development server
+npx nx serve my-app
+
+# View the dependency graph
+npx nx graph
+
+# Run all tests
+npx nx run-many -t test
+
+# Run linting
+npx nx run-many -t lint
+```
+
+### Workspace Structure After Setup
+
+```
+my-flyfront-app/
+├── apps/
+│   ├── my-app/              # Main application
+│   └── my-app-e2e/          # E2E tests
+├── libs/
+│   ├── core/                # @myapp/core - utilities, services
+│   ├── ui/                  # @myapp/ui - UI components
+│   ├── auth/                # @myapp/auth - authentication
+│   └── data-access/         # @myapp/data-access - API services
+├── nx.json                  # Nx configuration
+├── tsconfig.base.json       # TypeScript path mappings
+├── tailwind.config.js       # Tailwind configuration
+└── package.json             # Dependencies
+```
 
 ---
 
@@ -148,20 +354,127 @@ The application will be available at **http://localhost:4200**.
 - **TypeScript Compilation**: Errors show in the console
 - **Source Maps**: Debug TypeScript directly in browser DevTools
 
-### Other Useful Commands
+---
+
+## Essential Nx Commands
+
+Nx provides powerful commands for managing your monorepo. Here's a comprehensive reference:
+
+### Running Tasks
 
 ```bash
+# Run a task for a specific project
+npx nx <target> <project>
+npx nx build demo-app
+npx nx test core
+npx nx lint ui
+
+# Run a task for all projects
+npx nx run-many -t <target>
+npx nx run-many -t build
+npx nx run-many -t test
+npx nx run-many -t lint
+
+# Run a task only for affected projects (based on git changes)
+npx nx affected -t <target>
+npx nx affected -t test
+npx nx affected -t build
+```
+
+### Generating Code
+
+```bash
+# Generate a new application
+npx nx g @nx/angular:application my-new-app
+
+# Generate a new library
+npx nx g @nx/angular:library my-lib --directory=libs/my-lib
+
+# Generate a component
+npx nx g @nx/angular:component my-component --project=ui
+
+# Generate a service
+npx nx g @nx/angular:service my-service --project=core
+
+# Generate a guard
+npx nx g @nx/angular:guard my-guard --project=auth
+```
+
+### Workspace Analysis
+
+```bash
+# View the project dependency graph
+npx nx graph
+
+# Show affected projects
+npx nx affected --graph
+
+# List all projects
+npx nx show projects
+
+# Show project details
+npx nx show project demo-app
+```
+
+### Build & Serve
+
+```bash
+# Start development server
+npx nx serve demo-app
+
+# Start with specific port
+npx nx serve demo-app --port=4300
+
 # Build for production
 npx nx build demo-app --configuration=production
 
+# Build all projects
+npx nx run-many -t build --all
+```
+
+### Testing
+
+```bash
 # Run unit tests
 npx nx test core
 
-# Run linting
-npx nx lint ui
+# Run tests in watch mode
+npx nx test core --watch
 
-# Run all affected tests (based on git changes)
-npx nx affected -t test
+# Run tests with coverage
+npx nx test core --coverage
+
+# Run E2E tests
+npx nx e2e demo-app-e2e
+```
+
+### Caching & Performance
+
+```bash
+# Clear Nx cache
+npx nx reset
+
+# Run with verbose output
+npx nx build demo-app --verbose
+
+# Skip cache (force re-run)
+npx nx build demo-app --skip-nx-cache
+```
+
+### Common Task Combinations
+
+```bash
+# Full CI check
+npx nx run-many -t lint test build
+
+# Check affected before PR
+npx nx affected -t lint test build
+
+# Format check
+npx nx format:check
+
+# Apply formatting
+npx nx format:write
 ```
 
 ---

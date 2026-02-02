@@ -1,6 +1,7 @@
 /**
  * @flyfront/auth - Authentication Service
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 import { Injectable, inject, signal, computed } from '@angular/core';

@@ -1,6 +1,7 @@
 /**
  * @flyfront/i18n - Locale Pipes
  * @license Apache-2.0
+ * @copyright 2026 Firefly Software Solutions Inc.
  */
 
 import { Pipe, PipeTransform, inject } from '@angular/core';
