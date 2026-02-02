@@ -168,7 +168,7 @@ export class RadioGroupComponent<T = unknown> implements ControlValueAccessor, A
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {}
+  setDisabledState(_isDisabled: boolean): void {}
 
   isSelected(value: T): boolean {
     return this._value() === value;

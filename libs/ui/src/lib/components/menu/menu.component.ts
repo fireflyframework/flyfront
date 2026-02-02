@@ -9,7 +9,6 @@ import {
   input,
   output,
   signal,
-  computed,
   ElementRef,
   inject,
   OnDestroy,
@@ -56,7 +55,7 @@ export class MenuTriggerDirective {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (isOpen()) {
-      <div class="fixed inset-0 z-[999]" (click)="close()"></div>
+      <div class="fixed inset-0 z-[999]" role="presentation" (click)="close()" (keydown.escape)="close()"></div>
       <div
         class="fixed z-[1000] min-w-40 max-w-70 p-1 bg-white border border-gray-200 rounded-lg shadow-lg animate-menu-fade-in"
         [style.top.px]="menuTop()"

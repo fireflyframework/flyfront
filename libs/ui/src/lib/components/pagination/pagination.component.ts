@@ -28,8 +28,8 @@ export interface PageEvent {
       <div class="flex items-center gap-4">
         @if (showPageSize()) {
           <div class="flex items-center gap-2">
-            <label class="text-sm text-gray-600">Per page:</label>
-            <select class="py-1 px-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" [value]="pageSize()" (change)="onPageSizeChange($event)">
+            <label for="fly-pagination-page-size" class="text-sm text-gray-600">Per page:</label>
+            <select id="fly-pagination-page-size" class="py-1 px-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" [value]="pageSize()" (change)="onPageSizeChange($event)">
               @for (size of pageSizeOptions(); track size) {
                 <option [value]="size">{{ size }}</option>
               }
@@ -83,7 +83,7 @@ export class PaginationComponent {
     const pages: (number | string)[] = [];
     const half = Math.floor(maxVisible / 2);
     let start = Math.max(1, current - half);
-    let end = Math.min(total, start + maxVisible - 1);
+    const end = Math.min(total, start + maxVisible - 1);
     if (end - start < maxVisible - 1) start = Math.max(1, end - maxVisible + 1);
     if (start > 1) { pages.push(1); if (start > 2) pages.push('...'); }
     for (let i = start; i <= end; i++) pages.push(i);

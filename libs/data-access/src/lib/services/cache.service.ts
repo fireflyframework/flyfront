@@ -88,7 +88,7 @@ export class CacheService {
   /**
    * Set a cached value
    */
-  set<T>(key: string, data: T, ttl: number = 60000): void {
+  set<T>(key: string, data: T, ttl = 60000): void {
     const entry: CacheEntry<T> = {
       data,
       expiry: Date.now() + ttl,
@@ -170,7 +170,7 @@ export class CacheService {
   /**
    * Wrap an Observable with caching
    */
-  wrap<T>(key: string, factory: () => Observable<T>, ttl: number = 60000): Observable<T> {
+  wrap<T>(key: string, factory: () => Observable<T>, ttl = 60000): Observable<T> {
     // Check memory cache first
     const cached = this.get<T>(key);
     if (cached !== null) {
@@ -199,7 +199,7 @@ export class CacheService {
   /**
    * Get or set a value (cache-aside pattern)
    */
-  async getOrSet<T>(key: string, factory: () => T | Promise<T>, ttl: number = 60000): Promise<T> {
+  async getOrSet<T>(key: string, factory: () => T | Promise<T>, ttl = 60000): Promise<T> {
     const cached = this.get<T>(key);
     if (cached !== null) {
       return cached;

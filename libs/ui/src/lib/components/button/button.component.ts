@@ -9,8 +9,6 @@ import {
   Output,
   EventEmitter,
   ChangeDetectionStrategy,
-  HostBinding,
-  HostListener,
   booleanAttribute,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';

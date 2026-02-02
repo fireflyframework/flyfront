@@ -22,7 +22,6 @@ import {
   of,
   EMPTY,
   defer,
-  fromEvent,
 } from 'rxjs';
 import {
   catchError,
@@ -32,12 +31,9 @@ import {
   takeUntil,
   tap,
   retryWhen,
-  delay,
   scan,
   distinctUntilChanged,
-  startWith,
   finalize,
-  filter,
 } from 'rxjs/operators';
 import { ConfigService } from '@flyfront/core';
 import {
@@ -227,13 +223,14 @@ export class ApiService {
       .pipe(
         map((event: HttpEvent<T>) => {
           switch (event.type) {
-            case HttpEventType.UploadProgress:
+            case HttpEventType.UploadProgress: {
               const progress: UploadProgress = {
                 loaded: event.loaded,
                 total: event.total ?? 0,
                 percentage: event.total ? Math.round((event.loaded / event.total) * 100) : 0,
               };
               return progress;
+            }
             case HttpEventType.Response:
               return event.body as T;
             default:
@@ -345,7 +342,7 @@ export class ApiService {
    * Stop all active polling subscriptions
    */
   stopAllPolls(): void {
-    this.activePolls.forEach((stop$, id) => {
+    this.activePolls.forEach((stop$, _id) => {
       stop$.next();
       stop$.complete();
     });
@@ -399,7 +396,7 @@ export class ApiService {
       };
 
       // Handle error event
-      eventSource.onerror = (error) => {
+      eventSource.onerror = (_error) => {
         this.ngZone.run(() => {
           if (eventSource.readyState === EventSource.CLOSED) {
             subscriber.complete();
@@ -420,7 +417,7 @@ export class ApiService {
               lastEventId: event.lastEventId,
               origin: event.origin,
             });
-          } catch (e) {
+          } catch (_e) {
             subscriber.next({
               type: 'message',
               data: event.data as T,
@@ -444,7 +441,7 @@ export class ApiService {
                   lastEventId: event.lastEventId,
                   origin: event.origin,
                 });
-              } catch (e) {
+              } catch (_e) {
                 subscriber.next({
                   type: eventType,
                   data: event.data as T,
@@ -556,7 +553,7 @@ export class ApiService {
     const refresh$ = new BehaviorSubject<void>(undefined);
     const stop$ = new Subject<void>();
 
-    const data$ = refresh$.pipe(
+    let data$: Observable<T> = refresh$.pipe(
       takeUntil(stop$),
       switchMap(() => {
         const request$ = this.get<T>(endpoint, config?.requestConfig);
@@ -574,12 +571,15 @@ export class ApiService {
           })
         );
       }),
-      config?.shareReplay !== false ? shareReplay(1) : tap(),
       finalize(() => {
         refresh$.complete();
         stop$.complete();
       })
     );
+
+    if (config?.shareReplay !== false) {
+      data$ = data$.pipe(shareReplay(1));
+    }
 
     const refresh = () => refresh$.next();
 
@@ -729,7 +729,7 @@ export class ApiService {
     if (config?.sequential) {
       // Execute sequentially
       return requests.reduce(
-        (acc$, requestFn, index) =>
+        (acc$, requestFn, _index) =>
           acc$.pipe(
             switchMap((results) =>
               requestFn().pipe(

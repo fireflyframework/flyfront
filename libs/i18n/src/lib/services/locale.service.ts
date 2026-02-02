@@ -119,7 +119,7 @@ export class LocaleService {
    */
   formatCurrency(
     value: number,
-    currency: string = 'USD',
+    currency = 'USD',
     display: 'symbol' | 'code' | 'name' = 'symbol'
   ): string {
     return new Intl.NumberFormat(this._currentLang(), {
@@ -132,7 +132,7 @@ export class LocaleService {
   /**
    * Format percentage
    */
-  formatPercent(value: number, decimals: number = 0): string {
+  formatPercent(value: number, decimals = 0): string {
     return new Intl.NumberFormat(this._currentLang(), {
       style: 'percent',
       minimumFractionDigits: decimals,

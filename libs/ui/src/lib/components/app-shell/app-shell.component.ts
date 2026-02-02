@@ -9,7 +9,6 @@ import {
   Output,
   EventEmitter,
   ChangeDetectionStrategy,
-  signal,
   booleanAttribute,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';

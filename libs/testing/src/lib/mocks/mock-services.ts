@@ -27,7 +27,7 @@ export function createMockFn<TArgs extends unknown[] = unknown[], TReturn = unkn
   const calls: TArgs[] = [];
   let returnValue: TReturn | undefined;
   let resolvedValue: Awaited<TReturn> | undefined;
-  let impl = implementation;
+  const impl = implementation;
 
   const fn = ((...args: TArgs): TReturn => {
     calls.push(args);

@@ -104,7 +104,7 @@ export class SwitchComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {}
+  setDisabledState(_isDisabled: boolean): void {}
 
   onSwitchChange(event: Event): void {
     const input = event.target as HTMLInputElement;

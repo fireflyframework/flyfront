@@ -4,8 +4,8 @@
  */
 
 import { Injectable, OnDestroy, signal, computed } from '@angular/core';
-import { Subject, Observable, timer, EMPTY } from 'rxjs';
-import { filter, map, retry, takeUntil, tap } from 'rxjs/operators';
+import { Subject, Observable, timer } from 'rxjs';
+import { filter, map, takeUntil, tap } from 'rxjs/operators';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { WebSocketConfig, WebSocketMessage, WebSocketState } from '../models/data-access.models';
 

@@ -115,7 +115,7 @@ export class TextareaComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {}
+  setDisabledState(_isDisabled: boolean): void {}
 
   onInput(event: Event): void {
     const input = event.target as HTMLTextAreaElement;

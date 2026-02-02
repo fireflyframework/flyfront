@@ -48,13 +48,20 @@ export interface DialogRef<R = unknown> {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (isOpen()) {
-      <div class="fixed inset-0 z-[1050] flex items-center justify-center bg-black/50 transition-opacity duration-200" (click)="onBackdropClick()">
+      <div
+        class="fixed inset-0 z-[1050] flex items-center justify-center bg-black/50 transition-opacity duration-200"
+        (click)="onBackdropClick()"
+        (keydown.escape)="close()"
+        tabindex="-1"
+        role="presentation"
+      >
         <div
           [class]="dialogClasses()"
           role="dialog"
           aria-modal="true"
           [attr.aria-labelledby]="title() ? dialogTitleId : null"
           (click)="$event.stopPropagation()"
+          (keydown)="$event.stopPropagation()"
         >
           <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
             @if (title()) {
@@ -192,7 +199,7 @@ export class DialogComponent implements OnDestroy {
 export class DialogService {
   private activeDialogs: ComponentRef<DialogComponent>[] = [];
 
-  open<T = unknown, R = unknown>(viewContainerRef: ViewContainerRef, config: DialogConfig<T>): DialogRef<R> {
+  open<T = unknown, R = unknown>(viewContainerRef: ViewContainerRef, _config: DialogConfig<T>): DialogRef<R> {
     const componentRef = viewContainerRef.createComponent(DialogComponent);
     const instance = componentRef.instance;
 

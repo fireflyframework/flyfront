@@ -84,7 +84,9 @@ export class CheckboxComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {}
+  setDisabledState(_isDisabled: boolean): void {
+    // Disabled state is handled via input binding
+  }
 
   onCheckboxChange(event: Event): void {
     const input = event.target as HTMLInputElement;

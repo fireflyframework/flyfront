@@ -2,8 +2,10 @@
   "name": "@flyfront/state",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^21.1.0",
-    "@angular/core": "^21.1.0"
+    "@angular/core": "^21.1.0",
+    "@ngrx/store": "^21.0.1",
+    "@ngrx/entity": "^21.0.1",
+    "@ngrx/effects": "^21.0.1"
   },
   "sideEffects": false
 }

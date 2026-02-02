@@ -25,7 +25,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
 /**
  * Create a custom loader with a different base path
  */
-export function createTranslocoLoader(basePath: string = '/assets/i18n') {
+export function createTranslocoLoader(basePath = '/assets/i18n') {
   @Injectable()
   class CustomTranslocoLoader implements TranslocoLoader {
     readonly http = inject(HttpClient);

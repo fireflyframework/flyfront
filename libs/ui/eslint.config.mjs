@@ -38,6 +38,10 @@ export default [
           style: 'kebab-case',
         },
       ],
+      // Allow empty functions for ControlValueAccessor pattern
+      '@typescript-eslint/no-empty-function': 'off',
+      // Allow unused vars with underscore prefix
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },
   },
   {

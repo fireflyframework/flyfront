@@ -96,7 +96,7 @@ export class LocaleCurrencyPipe implements PipeTransform {
 
   transform(
     value: number | null | undefined,
-    currency: string = 'USD',
+    currency = 'USD',
     display: 'symbol' | 'code' | 'name' = 'symbol'
   ): string {
     if (value === null || value === undefined) {
@@ -124,7 +124,7 @@ export class LocaleCurrencyPipe implements PipeTransform {
 export class LocalePercentPipe implements PipeTransform {
   private readonly locale = inject(LocaleService);
 
-  transform(value: number | null | undefined, decimals: number = 0): string {
+  transform(value: number | null | undefined, decimals = 0): string {
     if (value === null || value === undefined) {
       return '';
     }
