@@ -289,7 +289,7 @@ services:
     restart: unless-stopped
 
   api:
-    image: ghcr.io/firefly-oss/api:latest  # Replace with your actual API image
+    image: ghcr.io/fireflyframework/api:latest  # Replace with your actual API image
     ports:
       - "3000:3000"
     environment:

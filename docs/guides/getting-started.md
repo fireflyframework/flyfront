@@ -77,7 +77,7 @@ If you're joining a team that already uses Flyfront, follow these steps:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/firefly-oss/flyfront.git
+git clone https://github.com/fireflyframework/flyfront.git
 cd flyfront
 ```
 
@@ -669,5 +669,5 @@ npx nx reset
 ### Getting Help
 
 - Check the [FAQ](#troubleshooting) section in relevant guides
-- Open an issue on [GitHub](https://github.com/firefly-oss/flyfront/issues)
-- Ask in [GitHub Discussions](https://github.com/firefly-oss/flyfront/discussions)
+- Open an issue on [GitHub](https://github.com/fireflyframework/flyfront/issues)
+- Ask in [GitHub Discussions](https://github.com/fireflyframework/flyfront/discussions)

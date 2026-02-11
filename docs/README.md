@@ -98,8 +98,8 @@ If you can't find what you're looking for:
 
 1. **Search the documentation** using your browser's find feature
 2. **Check the FAQ** in the relevant guide section
-3. **Open an issue** on [GitHub](https://github.com/firefly-oss/flyfront/issues)
-4. **Ask in discussions** on [GitHub Discussions](https://github.com/firefly-oss/flyfront/discussions)
+3. **Open an issue** on [GitHub](https://github.com/fireflyframework/flyfront/issues)
+4. **Ask in discussions** on [GitHub Discussions](https://github.com/fireflyframework/flyfront/discussions)
 
 ---
 

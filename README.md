@@ -191,7 +191,7 @@ Optional but recommended:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/firefly-oss/flyfront.git
+   git clone https://github.com/fireflyframework/flyfront.git
    cd flyfront
    ```
 
@@ -828,8 +828,8 @@ limitations under the License.
 
 **Built with <3 by the Firefly Software Solutions Inc**
 
-[ Star us on GitHub](https://github.com/firefly-oss/flyfront) •
-[ Report Bug](https://github.com/firefly-oss/flyfront/issues) •
-[ Request Feature](https://github.com/firefly-oss/flyfront/issues)
+[ Star us on GitHub](https://github.com/fireflyframework/flyfront) •
+[ Report Bug](https://github.com/fireflyframework/flyfront/issues) •
+[ Request Feature](https://github.com/fireflyframework/flyfront/issues)
 
 </div>
