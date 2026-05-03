@@ -1,7 +1,7 @@
 /**
  * @flyfront/ui - Dashboard Layout Component
  * @license Apache-2.0
- * @copyright 2026 Firefly Software Solutions Inc.
+ * @copyright 2026 Firefly Software Foundation.
  *
  * A comprehensive dashboard layout with collapsible sidebar, header with
  * breadcrumbs, and footer support. Ideal for admin panels and data-heavy applications.

@@ -1,7 +1,7 @@
 /**
  * @flyfront/ui - Design Tokens
  * @license Apache-2.0
- * @copyright 2026 Firefly Software Solutions Inc.
+ * @copyright 2026 Firefly Software Foundation.
  *
  * Design tokens define the visual language of the Flyfront design system.
  * These tokens should be used consistently across all components.

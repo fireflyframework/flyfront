@@ -826,7 +826,7 @@ limitations under the License.
 
 <div align="center">
 
-**Built with <3 by the Firefly Software Solutions Inc**
+**Built with <3 by the Firefly Software Foundation**
 
 [ Star us on GitHub](https://github.com/fireflyframework/flyfront) •
 [ Report Bug](https://github.com/fireflyframework/flyfront/issues) •

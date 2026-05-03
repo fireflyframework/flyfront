@@ -1,7 +1,7 @@
 /**
  * @flyfront/ui - Auth Layout Component
  * @license Apache-2.0
- * @copyright 2026 Firefly Software Solutions Inc.
+ * @copyright 2026 Firefly Software Foundation.
  *
  * A centered layout designed for authentication pages (login, register, forgot password).
  * Features a centered card with optional logo, background pattern, and footer.

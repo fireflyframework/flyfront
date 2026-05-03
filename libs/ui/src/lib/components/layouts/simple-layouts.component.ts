@@ -1,7 +1,7 @@
 /**
  * @flyfront/ui - Simple Layout Components
  * @license Apache-2.0
- * @copyright 2026 Firefly Software Solutions Inc.
+ * @copyright 2026 Firefly Software Foundation.
  *
  * A collection of simple, reusable layout components:
  * - CenteredLayout: Centers content both horizontally and vertically

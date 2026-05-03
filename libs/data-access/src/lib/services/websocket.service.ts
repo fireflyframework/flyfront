@@ -1,7 +1,7 @@
 /**
  * @flyfront/data-access - WebSocket Service
  * @license Apache-2.0
- * @copyright 2026 Firefly Software Solutions Inc.
+ * @copyright 2026 Firefly Software Foundation.
  */
 
 import { Injectable, OnDestroy, signal, computed } from '@angular/core';

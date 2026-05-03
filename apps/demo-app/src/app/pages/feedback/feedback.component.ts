@@ -1,7 +1,7 @@
 /**
  * @flyfront/demo-app - Feedback Components Showcase
  * @license Apache-2.0
- * @copyright 2026 Firefly Software Solutions Inc.
+ * @copyright 2026 Firefly Software Foundation.
  */
 
 import { Component, signal, inject, viewChild } from '@angular/core';

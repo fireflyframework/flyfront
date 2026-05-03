@@ -1,7 +1,7 @@
 /**
  * @flyfront/i18n - Locale Service
  * @license Apache-2.0
- * @copyright 2026 Firefly Software Solutions Inc.
+ * @copyright 2026 Firefly Software Foundation.
  */
 
 import { Injectable, inject, signal, computed, LOCALE_ID } from '@angular/core';
